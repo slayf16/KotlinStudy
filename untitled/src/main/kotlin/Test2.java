@@ -11,3 +11,4 @@ public class Test2 {
         this.a = a;
     }
 }
+//спросить про контекст
