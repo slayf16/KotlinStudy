@@ -52,26 +52,13 @@ fun main() {
                 "0. Выход")
         try{
 
-            val versionCalculator: Double = readLine()!!.toDouble()
-            if(versionCalculator == 0.0){
-                break
-            }
+            val versionCalculator = readLine()!!.toDouble()
+            if(versionCalculator == 0.0) break
+
 
             when(versionCalculator){
-                1.0 -> {
-                    println("1. Сумма чисел")
-                    workCalculator(versionCalculator)
-                }
-                2.0 -> {
-                    println("2. Разность чисел")
-                    workCalculator(versionCalculator)
-                }
-                3.0 -> {
-                    println("3. Отношение чисел")
-                    workCalculator(versionCalculator)
-                }
-                4.0 -> {
-                    println("4. Умножение чисел")
+                1.0, 2.0, 3.0 ,4.0 -> {
+                    // TODO println("4. Умножение чисел")
                     workCalculator(versionCalculator)
                 }
                 else -> println(getStringError())
@@ -99,7 +86,7 @@ fun checkCountNum (A: Int, B: Int):Boolean{
 }
 
 //task4
-fun isContains(maxSizeArr:Array<Int>, minSizeArr: Array<Int>):Boolean{
+fun isContains(maxSizeArr:Array<Any>, minSizeArr: Array<Any>):Boolean{
     var Array = Array<Boolean>(minSizeArr.size){false}
     for(i in minSizeArr.indices){
         for(j in maxSizeArr.indices){
@@ -124,43 +111,32 @@ fun numReversed(A:Int){
 
 
 
-fun getMethodCalc(versionCalculator: Double, Num1: Double, Num2: Double){
-
-    when(versionCalculator){
-        1.0 ->  println("$Num1 + $Num2 = ${getSumNumber(Num1, Num2)}")
-        2.0 ->  println("$Num1 - $Num2 = ${getDiffNumber(Num1, Num2)}")
-        3.0 ->  println("$Num1 / $Num2 = ${getRatioNumber(Num1, Num2)}")
-        4.0 ->  println("$Num1 X $Num2 = ${getMultiplicationNumber(Num1, Num2)}")
-        else -> println(getStringError())
-    }
+fun getMethodCalc(
+    versionCalculator: Double,
+    num1: Double,
+    num2: Double
+) = when(versionCalculator) {
+    1.0 -> println("$num1 + $num2 = ${getSumNumber(num1, num2)}")
+    2.0 -> println("$num1 - $num2 = ${getDiffNumber(num1, num2)}")
+    3.0 -> println("$num1 / $num2 = ${getRatioNumber(num1, num2)}")
+    4.0 -> println("$num1 X $num2 = ${getMultiplicationNumber(num1, num2)}")
+    else -> println(getStringError())
 }
+
 
 fun getStringError(): String{
     return "Необходимо выбрать цифры от 0 до 4, введенное число не входит в указанный диапазон!"
 }
 
-fun getSumNumber(a: Double, b: Double): Double{
-    return a + b
-}
-
-fun getDiffNumber(a: Double,b: Double): Double{
-    return a - b
-}
-
-fun getRatioNumber(a:Double, b:Double): Double{
-    return a/b
-}
-
-fun getMultiplicationNumber(a:Double, b:Double): Double{
-    return a*b
-}
-
-fun workCalculator(versionCalculator: Double){
+fun getSumNumber(a: Double, b: Double): Double = a + b
+fun getDiffNumber(a: Double,b: Double): Double = a - b
+fun getRatioNumber(a:Double, b:Double): Double = a / b
+fun getMultiplicationNumber(a:Double, b:Double): Double = a * b
+fun workCalculator(versionCalculator: Double, a: Int = 90){
     println("Введите число 1")
     val Num1: Double = readLine()!!.toDouble()
     println("Введите число 2")
     val Num2: Double = readLine()!!.toDouble()
     getMethodCalc(versionCalculator,Num1,Num2)
-
 }
 
